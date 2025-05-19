@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hangman Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 40px;
+        }
+        #hangman-image {
+            max-width: 200px;
+            height: auto;
+        }
+        #game {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hangman</h1>
+    <div class="container">
+        <img id="hangman-image" src="{{ url_for('static', filename='images/stage1.png') }}" alt="Hangman">
+        <div id="game">
+            <div id="word">Loading...</div>
+            <div id="lives"></div>
+            <div id="guesses"></div>
+            <input type="text" id="letter" maxlength="1">
+            <button onclick="makeGuess()">Guess</button>
+            <button onclick="resetGame()">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        function makeGuess() {
+            const letter = document.getElementById('letter').value;
+            fetch('/guess', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                body: `letter=${letter}`
+            })
+            .then(res => res.json())
+            .then(updateUI);
+        }
+
+        function updateUI(data) {
+            document.getElementById('word').innerText = data.display_word;
+            document.getElementById('lives').innerText = `Lives: ${data.lives}`;
+            document.getElementById('guesses').innerText = `Guessed: ${data.guesses.join(', ')}`;
+
+            // Change hangman image based on number of wrong guesses
+            document.getElementById('hangman-image').src = `/static/images/stage${data.stage}.png`;
+
+            if (data.game_over) {
+                alert(data.won ? 'You won!' : 'You lost!');
+            }
+
+            document.getElementById('letter').value = '';
+        }
+
+        function resetGame() {
+            fetch('/reset', {method: 'POST'})
+            .then(() => location.reload());
+        }
+
+        window.onload = makeGuess;
+    </script>
+</body>
+</html>

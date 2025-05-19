@@ -1,0 +1,66 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+    text-align: center;
+    margin: 0;
+    padding: 40px;
+    color: #000000;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+#game-container {
+    background: #ffffff;
+    padding: 30px;
+    margin: auto;
+    width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+#word {
+    font-size: 2.5em;
+    letter-spacing: 10px;
+    margin: 20px 0;
+    color: #34495e;
+}
+
+#lives, #guesses {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+input[type="text"] {
+    font-size: 1.5em;
+    padding: 10px;
+    width: 60px;
+    text-align: center;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+button {
+    font-size: 1em;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 10px 5px;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.alert {
+    margin-top: 20px;
+    font-weight: bold;
+}
