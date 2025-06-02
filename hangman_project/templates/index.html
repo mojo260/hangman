@@ -24,12 +24,20 @@
     <div class="container">
         <img id="hangman-image" src="{{ url_for('static', filename='images/stage1.png') }}" alt="Hangman">
         <div id="game">
+            <div>
+                <strong>Category:</strong> {{ category|capitalize }}<br>
+                <strong>Difficulty:</strong> {{ difficulty|capitalize }}
+            </div>
             <div id="word">Loading...</div>
             <div id="lives"></div>
             <div id="guesses"></div>
             <input type="text" id="letter" maxlength="1">
             <button onclick="makeGuess()">Guess</button>
             <button onclick="resetGame()">Reset</button>
+        </div>
+        <div>
+            <a href="{{ url_for('home') }}"><button>Back to Home</button></a>
+            <a href="{{ url_for('rules') }}"><button>Rules</button></a>
         </div>
     </div>
 

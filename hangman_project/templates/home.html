@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hangman - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .select-group { margin: 20px 0; }
+        label { font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Hangman</h1>
+    <form action="/" method="get">
+        <div class="select-group">
+            <label for="difficulty">Select Difficulty:</label>
+            <select name="difficulty" id="difficulty" required>
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+        </div>
+        <div class="select-group">
+            <label for="category">Select Category:</label>
+            <select name="category" id="category" required>
+                <option value="fruits">Fruits</option>
+                <option value="animals">Animals</option>
+                <option value="computers">Computers</option>
+            </select>
+        </div>
+        <button type="submit">Start Game</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!-- hangman_project/templates/rules.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hangman Rules</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .rules-container {
+            background: #fff;
+            padding: 30px;
+            margin: 40px auto;
+            width: 500px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+        h2 { text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="rules-container">
+        <h2>How to Play Hangman</h2>
+        <ul>
+            <li>The game randomly selects a word from a chosen category and difficulty.</li>
+            <li>You must guess the word one letter at a time.</li>
+            <li>Each incorrect guess costs you a life.</li>
+            <li>You have 6 lives. If you lose all lives, the game is over.</li>
+            <li>If you guess all the letters before running out of lives, you win!</li>
+            <li>Repeated guesses of the same letter do not cost extra lives.</li>
+            <li>Use the reset button to start a new game with the same settings.</li>
+        </ul>
+        <a href="{{ url_for('index') }}"><button>Back to Home</button></a>
+    </div>
+</body>
+</html>
